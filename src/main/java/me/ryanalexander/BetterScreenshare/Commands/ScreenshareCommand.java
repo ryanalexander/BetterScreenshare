@@ -14,16 +14,20 @@ public class ScreenshareCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
+
+        // Check player is specified, and player is online.
         if(args.length==0||Bukkit.getPlayer(args[0])==null||!Bukkit.getPlayer(args[0]).isOnline())
             return false;
 
         Player target = Bukkit.getPlayer(args[0]);
 
+        // Disable screenshare if player is already being screenshared
         if(PlayerScreenshare.targets.containsKey(target)){
             PlayerScreenshare.targets.get(target).cancel();
         }else {
             ScreenshareReason reason = ScreenshareReason.OTHER;
 
+            // Check if reason was specified for screenshare
             if (args.length > 1)
                 reason = Enums.getIfPresent(ScreenshareReason.class, args[1]).or(ScreenshareReason.OTHER);
 

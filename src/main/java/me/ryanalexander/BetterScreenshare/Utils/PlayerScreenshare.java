@@ -1,18 +1,7 @@
 package me.ryanalexander.BetterScreenshare.Utils;
 
-import me.ryanalexander.BetterScreenshare.Main;
 import me.ryanalexander.BetterScreenshare.Variables.ScreenshareReason;
-import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PlayerScreenshare {
@@ -24,6 +13,12 @@ public class PlayerScreenshare {
     Player staff;
     ScreenshareReason reason;
 
+    /**
+     * Put player in screenshare mode
+     * @param target Bukkit player object of player to be Screenshared
+     * @param staff Bukkit player object of player administering the Screenshare
+     * @param reason ScreenshareReason object of why the player is being screenshared
+     */
     public PlayerScreenshare(Player target, Player staff, ScreenshareReason reason){
         this.target=target;
         this.staff=staff;
@@ -39,18 +34,33 @@ public class PlayerScreenshare {
         JavaUtils.broadcastStage("initiate",this);
     }
 
+    /**
+     * Get player being screenshared
+     * @return Bukkit player object
+     */
     public Player getTarget() {
         return target;
     }
 
+    /**
+     * Get player administering screenshare
+     * @return Bukkit player object
+     */
     public Player getStaff() {
         return staff;
     }
 
+    /**
+     * Get reason for screenshare
+     * @return ScreenshareReason object
+     */
     public ScreenshareReason getReason() {
         return reason;
     }
 
+    /**
+     * Cancel/end screenshare in progress.
+     */
     public void cancel() {
         target.setAllowFlight(false);
         target.setWalkSpeed(0.01F);

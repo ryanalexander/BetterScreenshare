@@ -34,8 +34,11 @@ public class PlayerEvents implements Listener {
     @EventHandler
     public void PlayerLeave(PlayerQuitEvent e){
         if(PlayerScreenshare.targets.containsKey(e.getPlayer())) {
+
+            // Broadcast disconnect messages
             JavaUtils.broadcastStage("disconnect",PlayerScreenshare.targets.get(e.getPlayer()));
 
+            // Execute disconnect commands
             FileConfiguration config = Main.getPlugin(Main.class).getConfig();
             for(String command : config.getStringList("commands.screenshare_disconnect"))
                 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),JavaUtils.doApplyTranslations(PlayerScreenshare.targets.get(e.getPlayer()),command));
@@ -44,6 +47,7 @@ public class PlayerEvents implements Listener {
 
     @EventHandler
     public void PlayerMove(PlayerMoveEvent e){
+        // Allow player to look around, but deny any other movement.
         if(PlayerScreenshare.targets.containsKey(e.getPlayer())) {
             if(
                     e.getTo().getX()!=e.getFrom().getX()||
@@ -56,18 +60,11 @@ public class PlayerEvents implements Listener {
 
     @EventHandler
     public void PlayerDamagePlayer(EntityDamageByEntityEvent e){
+        // Prevent the player damaging other players, or other players damaging player.
         if(
                 ((e.getDamager() instanceof Player)&&
                 (PlayerScreenshare.targets.containsKey((Player)e.getDamager())||
                 e.getEntity() instanceof Player && PlayerScreenshare.targets.containsKey((Player)e.getEntity()))))
             e.setCancelled(true);
     }
-
-    @EventHandler
-    public void PlayerDismountEvent(EntityDismountEvent e){
-        if(e.getEntity() instanceof Player && PlayerScreenshare.targets.containsKey((Player)e.getEntity()))
-            e.getEntity().setPassenger(e.getDismounted());
-    }
-
-
 }

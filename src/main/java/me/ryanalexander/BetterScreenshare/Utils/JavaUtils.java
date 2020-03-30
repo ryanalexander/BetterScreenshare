@@ -16,7 +16,12 @@ public class JavaUtils {
         return i > 1 || i==0;
     }
 
-
+    /**
+     * Apply placeholders to message
+     * @param screenshare Screenshare object
+     * @param message Message to be formatted
+     * @return Formatted message
+     */
     public static String doApplyTranslations(PlayerScreenshare screenshare, String message){
         return message
                 .replaceAll("(%player%)",screenshare.getTarget().getName())
@@ -24,6 +29,12 @@ public class JavaUtils {
                 .replaceAll("(%staff)",(screenshare.getStaff()==null?"A member of staff":screenshare.getStaff().getName()));
     }
 
+    /**
+     * Apply placeholders to list of messages
+     * @param screenshare Screenshare object
+     * @param message Messages to be formatted
+     * @return Formatted messages
+     */
     public static String[] doApplyTranslations(PlayerScreenshare screenshare, String[] message){
         List<String> reply = new ArrayList<>();
         for(String line : message)
@@ -34,14 +45,30 @@ public class JavaUtils {
         return reply.toArray(new String[]{});
     }
 
+    /**
+     * Apply color codes to message
+     * @param s Original message
+     * @return Alt color char message
+     */
     public static String format(String s){
         return ChatColor.translateAlternateColorCodes('&',s);
     }
 
+    /**
+     * Apply placeholders to message and apply color codes
+     * @param s Message to be formatted
+     * @param screenshare Screenshare object
+     * @return Formatted message
+     */
     public static String format(String s, PlayerScreenshare screenshare){
         return ChatColor.translateAlternateColorCodes('&',doApplyTranslations(screenshare,s));
     }
 
+    /**
+     * Apply color codes to list of messages
+     * @param s List of messages
+     * @return Alt color char messages
+     */
     public static String[] format(String[] s){
         List<String> reply = new ArrayList<>();
         for(String line : s)
@@ -49,6 +76,12 @@ public class JavaUtils {
         return reply.toArray(new String[]{});
     }
 
+    /**
+     * Apply placeholders to list of messages and apply color codes
+     * @param s Messages to be formatted
+     * @param screenshare Screenshare object
+     * @return Formatted messages
+     */
     public static String[] format(String[] s, PlayerScreenshare screenshare){
         List<String> reply = new ArrayList<>();
         for(String line : doApplyTranslations(screenshare,s))
