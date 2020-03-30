@@ -1,6 +1,7 @@
 package me.ryanalexander.BetterScreenshare.Commands;
 
 import com.google.common.base.Enums;
+import me.ryanalexander.BetterScreenshare.Utils.JavaUtils;
 import me.ryanalexander.BetterScreenshare.Utils.PlayerScreenshare;
 import me.ryanalexander.BetterScreenshare.Variables.ScreenshareReason;
 import org.bukkit.Bukkit;
@@ -18,6 +19,11 @@ public class ScreenshareCommand implements CommandExecutor {
         // Check player is specified, and player is online.
         if(args.length==0||Bukkit.getPlayer(args[0])==null||!Bukkit.getPlayer(args[0]).isOnline())
             return false;
+
+        if(!sender.hasPermission("screenshare.do")) {
+            sender.sendMessage(JavaUtils.format("&cYou are not permitted to execute that command."));
+            return true;
+        }
 
         Player target = Bukkit.getPlayer(args[0]);
 
