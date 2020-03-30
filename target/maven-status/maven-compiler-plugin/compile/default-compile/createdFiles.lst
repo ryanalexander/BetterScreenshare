@@ -1,0 +1,12 @@
+me\ryanalexander\BetterScreenshare\Variables\Reasons\Reach.class
+me\ryanalexander\BetterScreenshare\Variables\Reason.class
+me\ryanalexander\BetterScreenshare\Variables\Reasons\Other.class
+me\ryanalexander\BetterScreenshare\Utils\PlayerScreenshare.class
+me\ryanalexander\BetterScreenshare\API\ScreenshareAPI.class
+me\ryanalexander\BetterScreenshare\Variables\Reasons\KillAura.class
+me\ryanalexander\BetterScreenshare\Variables\Reasons\Speed.class
+me\ryanalexander\BetterScreenshare\Variables\ScreenshareReason.class
+me\ryanalexander\BetterScreenshare\Events\PlayerEvents.class
+me\ryanalexander\BetterScreenshare\Main.class
+me\ryanalexander\BetterScreenshare\Utils\JavaUtils.class
+me\ryanalexander\BetterScreenshare\Commands\ScreenshareCommand.class

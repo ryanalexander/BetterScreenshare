@@ -1,0 +1,13 @@
+name: BetterScreenshare
+main: me.ryanalexander.BetterScreenshare.Main
+version: 1.0
+api-version: 1.13
+commands:
+  screenshare:
+    aliases:
+      - ss
+      - bss
+      - freeze
+      - screenie
+    description: Enter a player into screenshare mode.
+    usage: '§cUSAGE: /screenshare {player} [reason]'

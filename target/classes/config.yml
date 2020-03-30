@@ -1,0 +1,46 @@
+#$####################################################$
+#$            BetterScreenshare ${plugin.version}           $#
+#$                       by AspyTheAussie               $#
+#$                   Last update: 30/03/2020            $#
+#$                                                      $#
+#$    Thank-you for making your server a better place   $#
+#  $####################################################$
+
+version: 1
+
+#
+##        LANGUAGE SETTINGS
+##
+## Placeholders
+## %player%     - Player name
+## %reason%     - Reason for screenshare
+## %staff%      - Staff member managing screenshare
+
+lang:
+  initiate:
+    player:
+      - "&e&m---------------------------------------------------"
+      - "&cYou have been suspected of cheating, please join &ediscord.gg/example&c to undergo a screenshare."
+      - "&cFailure to do so will result in a permanent ban."
+      - "&cLogging out will result in a ban for refusal to screenshare!"
+      - "&e&m---------------------------------------------------"
+    staff:
+      - "&7You have entered &e%player%&7 into screenshare mode for &e%reason%&7."
+    broadcast:
+      - "&e%player%&7 has been suspected of cheating and has been frozen."
+  done:
+    staff:
+      - "&e%player%&7 is no longer in screenshare mode."
+    broadcast:
+      - "&e%player%&7 has been cleared of any suspected cheating."
+    player:
+      - "&7You are no longer in screenshare mode."
+  disconnect:
+    staff:
+      - "&e%player%&7 has disconnected while you were screensharing them. They have been permanently banned."
+    broadcast:
+      - "&e%player%&7 was banned for refusing to screenshare"
+
+commands:
+  screenshare_disconnect:
+    - "ban %player% -s Refusal to screenshare (%staff%)"
